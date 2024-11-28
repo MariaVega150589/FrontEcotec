@@ -1,0 +1,33 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{title}}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="projectform">
+        <div>
+            <div>
+                <span>Name</span>
+                <input type="text" class="form-control" formControlName="name">
+            </div>
+            <div>
+                <span>Description</span>
+                <input type="text" class="form-control" formControlName="description">
+            </div>
+            <div class="form-check">
+                <label class="form-check-label" for="status">
+                    Status
+                </label>
+                <input type="checkbox" class="form-check-input" id="status" formControlName="status">
+            </div>
+            <div>
+                <span>AssignedTo</span>
+                <input type="text" class="form-control" formControlName="assignedTo">
+            </div>
+        </div>
+
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" [disabled]="!projectform.valid" class="btn btn-outline-primary" (click)="Ok()">Ok</button>
+    <button type="button" class="btn btn-outline-secondary" (click)="dismissModal()">Close</button>
+</div>

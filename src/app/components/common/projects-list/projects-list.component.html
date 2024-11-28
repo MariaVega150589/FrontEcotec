@@ -1,0 +1,54 @@
+<div class="separate">
+    <div>
+        <button class="btn btn-primary" (click)="openModalForm('N')">New</button>
+    </div>
+    <div class="table-responsive separate">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        Id
+                    </th>
+                    <th scope="col">
+                        Name
+                    </th>
+                    <th scope="col">
+                        Description
+                    </th>
+                    <th scope="col">
+                        Status
+                    </th>
+                    <th scope="col">
+                        AssignedTo
+                    </th>
+                    <th scope="col">
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let project of resProjects | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                    <td>{{project.id}}</td>
+                    <td>{{project.name}}</td>
+                    <td>{{project.description}}</td>
+                    <td>{{project.status ? 'Active' : 'Inactive'}}</td>
+                    <td>{{project.assignedTo}}</td>
+                    <td>
+                        <div class="buttons">
+                            <button type="button" class="btn btn-danger" (click)="openConfirmModal(project)">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                            <button class="btn btn-primary" (click)="openModalForm('E', project)">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </div>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<ngb-pagination *ngIf="resProjects" class="d-flex justify-content-end" [pageSize]="5"
+    [collectionSize]="resProjects.length" [(page)]="page" [boundaryLinks]="true"></ngb-pagination>

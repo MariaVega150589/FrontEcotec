@@ -1,0 +1,12 @@
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" routerLink="/projects">Home <span class="sr-only"></span></a>
+        </li>
+    </ul>
+    <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" routerLink="/login" (click)="logOut()">Log
+        out</button>
+</nav>
+
+
+<app-projects-list></app-projects-list>
